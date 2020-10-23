@@ -67,8 +67,12 @@ Every question and every answer should be associated with a user.  A user should
 When a user answers a question, the question's author should receive an email with a link to the answer.
 
 ### How much of this is JavaScript and Ajax?
+This application can be implemented as a simple Django application, but you could also use Ajax to make it more dynamic. Check
+out [this tutorial](https://djangocentral.com/django-ajax-with-jquery/) on using Django with Ajax. The JavaScript in the tutorial is written using jquery, but it's possible to use the fetch API or other Ajax interfaces. The important part
+is returning a JsonResponse instead of a call to render, and using the is_ajax method (if you're using forms to collect the
+data).
 
-Adding answers should happen in the page with no page load, thereby needing Ajax. Likewise, "starring" questions and answers and marking answers as correct should happen via Ajax.
+If you make this an Ajax application, Adding answers should happen in the page with no page load. Likewise, "starring" questions and answers and marking answers as correct should happen via Ajax.
 
 The rest of the application can be plain old Django views, although you can use JavaScript and Ajax to load questions and answers if you want.
 
@@ -95,7 +99,6 @@ The cards should be shown in a random order at a minimum. A preferable method wo
 This application has two very distinct parts -- creating decks and cards and then running through those decks. This is a natural place to split work. Do not forget to make creating decks and cards an easy-to-use experience.
 
 ### How much of this is JavaScript + Ajax?
-
 This can vary, but I imagine a lot of it is JavaScript. To show one card at a time without a page reload in between cards will require talking back and forth via Ajax. Recording whether you answered correctly or not would be another Ajax call.
 
 "Flipping" a card (you don't have to animate a card flip, although if you do, that's very cool) will almost certainly require JavaScript.
